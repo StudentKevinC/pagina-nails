@@ -3,39 +3,46 @@
 import { useState } from "react"
 
 const business = {
-  name: "JV Nails Studio",
+  name: "Javiera Nails",
+  brand: "jaavieranailss",
   owner: "Javiera Valenzuela",
-  experience: "10 años de experiencia",
-  whatsappUrl: "https://wa.me/56974779986",
-  instagramUrl: "https://www.instagram.com/",
-  instagram: "@jvnailsstudio",
+  experience: "Manicurista certificada desde 2020",
+  whatsappUrl: "https://wa.me/56977503024",
+  instagramUrl: "https://www.instagram.com/jaavieranailss/",
+  instagram: "@jaavieranailss",
+  phone: "+56 9 7750 3024",
   deposit: "$5.000",
-  location: "Atención en domicilio de la especialista",
+  location: "Honestudio en Santiago, Conchalí",
+  note: "No se realizan domicilios",
 }
 
 const services = [
   {
     icon: "💅",
     title: "Manicure permanente",
-    description: "Esmaltado permanente con preparación, limpieza y terminación prolija.",
+    description:
+      "Esmaltado permanente con preparación, limpieza y terminación prolija.",
     price: "Desde $15.000",
   },
   {
     icon: "✨",
     title: "Soft gel",
-    description: "Extensión de uñas con acabado elegante, natural y resistente.",
+    description:
+      "Extensión de uñas con acabado elegante, natural y resistente.",
     price: "Desde $22.000",
   },
   {
     icon: "🌸",
     title: "Diseños personalizados",
-    description: "Diseños delicados, brillos, francés, efectos, stickers y detalles.",
+    description:
+      "Diseños delicados, brillos, francés, efectos, stickers y detalles.",
     price: "Desde $2.000 adicional",
   },
   {
     icon: "🧴",
     title: "Retiro y cuidado",
-    description: "Retiro seguro, limado, limpieza y cuidado de la uña natural.",
+    description:
+      "Retiro seguro, limado, limpieza y cuidado de la uña natural.",
     price: "Desde $5.000",
   },
 ]
@@ -75,13 +82,42 @@ const gallery = [
     title: "Soft gel",
     detail: "Extensión natural y resistente",
   },
+  {
+    emoji: "🦋",
+    title: "Diseños creativos",
+    detail: "Ideas únicas según tu estilo",
+  },
 ]
 
 const availableSlots = [
-  { date: "Lunes 10 de junio", times: ["10:00", "12:00", "16:00"] },
-  { date: "Martes 11 de junio", times: ["09:30", "14:00", "18:00"] },
-  { date: "Miércoles 12 de junio", times: ["11:00", "15:30", "17:30"] },
-  { date: "Jueves 13 de junio", times: ["10:30", "13:00", "19:00"] },
+  {
+    date: "Lunes",
+    times: ["09:30", "11:00", "12:30", "15:00", "16:30", "18:00"],
+  },
+  {
+    date: "Martes",
+    times: ["09:30", "11:00", "13:00", "15:30", "17:00", "18:30"],
+  },
+  {
+    date: "Miércoles",
+    times: ["10:00", "11:30", "13:00", "15:00", "16:30", "18:00"],
+  },
+  {
+    date: "Jueves",
+    times: ["09:30", "11:00", "12:30", "15:30", "17:00", "19:00"],
+  },
+  {
+    date: "Viernes",
+    times: ["10:00", "11:30", "13:00", "15:00", "17:00", "19:00"],
+  },
+  {
+    date: "Sábado",
+    times: ["10:00", "11:30", "13:00", "15:00", "16:30", "18:00"],
+  },
+  {
+    date: "Domingo",
+    times: ["10:30", "12:00", "13:30", "15:30", "17:00"],
+  },
 ]
 
 const testimonials = [
@@ -135,7 +171,7 @@ export default function Home() {
       return
     }
 
-    const message = `Hola Javiera, quiero reservar una hora para ${selectedService} el ${selectedDate} a las ${selectedTime}. Entiendo que debo abonar ${business.deposit} para guardar la fecha.`
+    const message = `Hola Javiera, quiero reservar una hora para ${selectedService} el día ${selectedDate} a las ${selectedTime}. Entiendo que la atención es en Honestudio, Santiago, Conchalí, que no se realizan domicilios y que debo abonar ${business.deposit} para guardar la fecha.`
     const encodedMessage = encodeURIComponent(message)
 
     window.open(`${business.whatsappUrl}?text=${encodedMessage}`, "_blank")
@@ -155,7 +191,7 @@ export default function Home() {
                 {business.name}
               </h1>
               <p className="text-xs font-bold text-[#7a646d]">
-                Uñas por {business.owner}
+                {business.instagram}
               </p>
             </div>
           </a>
@@ -198,7 +234,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="mb-5 inline-block rounded-full bg-white px-5 py-2 font-black text-[#d96f9b] shadow-lg shadow-pink-100">
-              Salón de uñas personalizado
+              Manicurista certificada en Conchalí
             </p>
 
             <h2 className="max-w-3xl text-5xl font-black leading-tight tracking-tight md:text-7xl">
@@ -206,9 +242,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#6d5c63]">
-              Atención personalizada por Javiera Valenzuela, especialista en
-              manicure, soft gel y diseños delicados. Agenda tu hora online y
-              confirma tu reserva por WhatsApp.
+              {business.experience} en {business.location}. Agenda tu hora por
+              WhatsApp y confirma tu reserva con un abono de {business.deposit}.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -230,10 +265,10 @@ export default function Home() {
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               <div className="rounded-3xl bg-white p-5 shadow-lg shadow-pink-100">
                 <strong className="block text-3xl font-black text-[#d96f9b]">
-                  10+
+                  2020
                 </strong>
                 <span className="text-sm font-bold text-[#7a646d]">
-                  años de experiencia
+                  certificada desde
                 </span>
               </div>
 
@@ -265,7 +300,10 @@ export default function Home() {
                   Diseño, cuidado y estilo en cada detalle
                 </h3>
                 <p className="mt-4 font-bold text-[#d96f9b]">
-                  Por {business.owner}
+                  {business.location}
+                </p>
+                <p className="mt-2 text-sm font-bold text-[#7a646d]">
+                  {business.note}
                 </p>
               </div>
             </div>
@@ -330,7 +368,7 @@ export default function Home() {
               <h3 className="text-4xl font-black">{business.owner}</h3>
 
               <p className="mt-3 font-black text-[#d96f9b]">
-                Especialista en uñas
+                {business.experience}
               </p>
 
               <p className="mt-5 leading-8 text-[#6d5c63]">
@@ -343,11 +381,11 @@ export default function Home() {
             <p className="font-black text-[#d96f9b]">Sobre Javiera</p>
 
             <h3 className="mt-3 text-4xl font-black leading-tight md:text-5xl">
-              {business.experience} creando diseños femeninos y prolijos
+              Especialista en diseños femeninos, prolijos y personalizados
             </h3>
 
             <p className="mt-6 text-lg leading-8 text-[#6d5c63]">
-              Soy {business.owner}, especialista en servicios de uñas con
+              Soy {business.owner}, manicurista certificada desde 2020, con
               enfoque en prolijidad, higiene, diseño y atención cercana. Mi
               objetivo es que cada clienta se sienta cómoda, escuchada y feliz
               con el resultado.
@@ -437,12 +475,23 @@ export default function Home() {
                   </button>
                 ))}
               </div>
+
+              <div className="mt-6 rounded-3xl bg-white p-5 leading-7 text-[#6d5c63]">
+                <p>
+                  <strong className="text-[#d96f9b]">Atención:</strong>{" "}
+                  {business.location}.
+                </p>
+                <p>
+                  <strong className="text-[#d96f9b]">Importante:</strong>{" "}
+                  {business.note}.
+                </p>
+              </div>
             </div>
 
             <div className="rounded-[2rem] bg-[#fff1f6] p-5">
               <h4 className="mb-4 text-xl font-black">2. Día disponible</h4>
 
-              <div className="mb-7 grid gap-3 sm:grid-cols-2">
+              <div className="mb-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {availableSlots.map((slot) => (
                   <button
                     key={slot.date}
@@ -490,11 +539,14 @@ export default function Home() {
                     <strong>Servicio:</strong> {selectedService}
                   </p>
                   <p>
-                    <strong>Fecha:</strong> {selectedDate}
+                    <strong>Día:</strong> {selectedDate}
                   </p>
                   <p>
                     <strong>Hora:</strong>{" "}
                     {selectedTime || "Selecciona una hora"}
+                  </p>
+                  <p>
+                    <strong>Ubicación:</strong> {business.location}
                   </p>
                   <p>
                     <strong>Abono:</strong> {business.deposit}
@@ -583,14 +635,19 @@ export default function Home() {
 
           <div className="mt-8 grid gap-4 text-[#6d5c63]">
             <p>✅ La reserva se confirma con un abono de {business.deposit}.</p>
+            <p>✅ El abono permite guardar la fecha y hora seleccionada.</p>
+            <p>✅ Atención en Honestudio, Santiago, Conchalí.</p>
+            <p>✅ No se realizan domicilios.</p>
             <p>✅ El valor final puede variar según diseño, largo o técnica.</p>
-            <p>✅ Se solicita puntualidad para respetar las horas agendadas.</p>
             <p>✅ En caso de cambios, avisar con anticipación por WhatsApp.</p>
           </div>
         </div>
       </section>
 
-      <section id="contacto" className="bg-gradient-to-br from-[#d96f9b] to-[#b85b7f] px-5 py-24 text-white">
+      <section
+        id="contacto"
+        className="bg-gradient-to-br from-[#d96f9b] to-[#b85b7f] px-5 py-24 text-white"
+      >
         <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-white/20 bg-white/15 p-8 text-center shadow-2xl backdrop-blur-xl md:p-14">
           <p className="font-black text-pink-100">Contacto</p>
 
@@ -599,8 +656,9 @@ export default function Home() {
           </h3>
 
           <p className="mx-auto mt-6 max-w-2xl leading-8 text-pink-50">
-            Escríbeme por WhatsApp o Instagram para consultar diseños, valores,
-            disponibilidad y condiciones de atención.
+            Escríbeme por WhatsApp o Instagram para consultar disponibilidad,
+            valores, diseños y condiciones de atención. Atención en Honestudio,
+            Santiago, Conchalí. No se realizan domicilios.
           </p>
 
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
@@ -633,11 +691,15 @@ export default function Home() {
 
       <footer className="bg-[#1f171b] px-5 py-10 text-center text-white">
         <h3 className="text-2xl font-black text-[#f3a9c6]">
-          {business.name}
+          {business.brand}
         </h3>
 
         <p className="mt-2 text-zinc-300">
-          Uñas por {business.owner}
+          Manicurista certificada desde 2020 · Santiago, Conchalí
+        </p>
+
+        <p className="mt-1 text-zinc-400">
+          Agenda por WhatsApp: {business.phone}
         </p>
       </footer>
     </main>
