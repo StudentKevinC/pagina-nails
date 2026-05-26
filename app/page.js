@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { supabase } from "../lib/supabaseClient"
 
 const business = {
   name: "Javiera Nails",
@@ -89,37 +90,6 @@ const gallery = [
   },
 ]
 
-const availableSlots = [
-  {
-    date: "Lunes",
-    times: ["09:30", "11:00", "12:30", "15:00", "16:30", "18:00"],
-  },
-  {
-    date: "Martes",
-    times: ["09:30", "11:00", "13:00", "15:30", "17:00", "18:30"],
-  },
-  {
-    date: "Miércoles",
-    times: ["10:00", "11:30", "13:00", "15:00", "16:30", "18:00"],
-  },
-  {
-    date: "Jueves",
-    times: ["09:30", "11:00", "12:30", "15:30", "17:00", "19:00"],
-  },
-  {
-    date: "Viernes",
-    times: ["10:00", "11:30", "13:00", "15:00", "17:00", "19:00"],
-  },
-  {
-    date: "Sábado",
-    times: ["10:00", "11:30", "13:00", "15:00", "16:30", "18:00"],
-  },
-  {
-    date: "Domingo",
-    times: ["10:30", "12:00", "13:30", "15:30", "17:00"],
-  },
-]
-
 const testimonials = [
   {
     name: "Camila R.",
@@ -159,11 +129,44 @@ const steps = [
 ]
 
 export default function Home() {
+  const [appointments, setAppointments] = useState([])
   const [selectedService, setSelectedService] = useState(services[0].title)
-  const [selectedDate, setSelectedDate] = useState(availableSlots[0].date)
+  const [selectedDate, setSelectedDate] = useState("")
   const [selectedTime, setSelectedTime] = useState("")
+  const [loadingAppointments, setLoadingAppointments] = useState(true)
 
-  const selectedDay = availableSlots.find((slot) => slot.date === selectedDate)
+  useEffect(() => {
+    const loadAppointments = async () => {
+      setLoadingAppointments(true)
+
+      const { data, error } = await supabase
+        .from("appointments")
+        .select("*")
+        .eq("available", true)
+        .order("id", { ascending: true })
+
+      setLoadingAppointments(false)
+
+      if (error) {
+        console.log("Error cargando horarios:", error)
+        return
+      }
+
+      setAppointments(data || [])
+
+      if (data && data.length > 0) {
+        setSelectedDate(data[0].date)
+      }
+    }
+
+    loadAppointments()
+  }, [])
+
+  const availableDays = [...new Set(appointments.map((item) => item.date))]
+
+  const availableTimes = appointments
+    .filter((item) => item.date === selectedDate)
+    .map((item) => item.time)
 
   const handleBooking = () => {
     if (!selectedTime) {
@@ -492,20 +495,32 @@ export default function Home() {
               <h4 className="mb-4 text-xl font-black">2. Día disponible</h4>
 
               <div className="mb-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {availableSlots.map((slot) => (
+                {loadingAppointments && (
+                  <p className="rounded-2xl bg-white p-5 text-[#6d5c63]">
+                    Cargando horarios...
+                  </p>
+                )}
+
+                {!loadingAppointments && availableDays.length === 0 && (
+                  <p className="rounded-2xl bg-white p-5 text-[#6d5c63]">
+                    No hay días disponibles por ahora.
+                  </p>
+                )}
+
+                {availableDays.map((day) => (
                   <button
-                    key={slot.date}
+                    key={day}
                     onClick={() => {
-                      setSelectedDate(slot.date)
+                      setSelectedDate(day)
                       setSelectedTime("")
                     }}
                     className={`rounded-2xl px-5 py-4 text-left font-black transition ${
-                      selectedDate === slot.date
+                      selectedDate === day
                         ? "bg-[#d96f9b] text-white shadow-lg shadow-pink-200"
                         : "bg-white text-[#5f4d55] hover:bg-[#f8dce8]"
                     }`}
                   >
-                    {slot.date}
+                    {day}
                   </button>
                 ))}
               </div>
@@ -513,7 +528,13 @@ export default function Home() {
               <h4 className="mb-4 text-xl font-black">3. Hora disponible</h4>
 
               <div className="grid gap-4 sm:grid-cols-3">
-                {selectedDay.times.map((time) => (
+                {!loadingAppointments && availableTimes.length === 0 && (
+                  <p className="rounded-2xl bg-white p-5 text-[#6d5c63]">
+                    No hay horarios disponibles para este día.
+                  </p>
+                )}
+
+                {availableTimes.map((time) => (
                   <button
                     key={time}
                     onClick={() => setSelectedTime(time)}
@@ -539,7 +560,8 @@ export default function Home() {
                     <strong>Servicio:</strong> {selectedService}
                   </p>
                   <p>
-                    <strong>Día:</strong> {selectedDate}
+                    <strong>Día:</strong>{" "}
+                    {selectedDate || "Selecciona un día"}
                   </p>
                   <p>
                     <strong>Hora:</strong>{" "}
