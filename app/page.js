@@ -10,7 +10,6 @@ const business = {
   experience: "Manicurista certificada desde 2020",
   whatsappUrl: "https://wa.me/56977503024",
   instagramUrl: "https://www.instagram.com/jaavieranailss/",
-  instagram: "@jaavieranailss",
   phone: "+56 9 7750 3024",
   deposit: "$5.000",
   location: "Honestudio en Santiago, Conchalí",
@@ -19,35 +18,35 @@ const business = {
 
 const services = [
   {
-    icon: "💅",
+    image: "/galeria/1%20(7).jpeg",
     title: "Esmaltado permanente",
     description:
       "Esmaltado de larga duración con preparación de la uña natural, limpieza y terminación prolija.",
     price: "Valor según diseño",
   },
   {
-    icon: "✨",
+    image: "/galeria/1%20(24).jpeg",
     title: "Soft gel",
     description:
       "Extensión de uñas con tips soft gel, ideal para lograr largo, forma y un acabado delicado.",
     price: "Valor según largo y diseño",
   },
   {
-    icon: "🌸",
+    image: "/galeria/1%20(10).jpeg",
     title: "Nivelación base rubber",
     description:
       "Nivelación sobre uña natural con base rubber para reforzar, emparejar y dar un acabado más resistente.",
     price: "Valor según diseño",
   },
   {
-    icon: "🤍",
+    image: "/galeria/1%20(16).jpeg",
     title: "Nivelación polygel",
     description:
       "Refuerzo y nivelación con polygel para aportar estructura, resistencia y una terminación más firme.",
     price: "Valor según diseño",
   },
   {
-    icon: "💎",
+    image: "/galeria/1%20(1).jpeg",
     title: "Baño acrílico",
     description:
       "Capa de acrílico sobre la uña natural para entregar mayor resistencia y duración.",
@@ -71,58 +70,257 @@ const galleryFilters = [
   "Esmaltado permanente",
   "Nivelación",
   "Full set",
+  "Soft gel",
   "Uñas cortas",
 ]
 
-const createGalleryItems = (category, start, end, title, detail) => {
-  return Array.from({ length: end - start + 1 }, (_, index) => {
-    const number = start + index
-
-    return {
-      category,
-      title: `${title} ${index + 1}`,
-      detail,
-      image: `/galeria/1%20(${number}).jpeg`,
-    }
-  })
-}
-
 const gallery = [
-  ...createGalleryItems(
-    "Acrílicas",
-    1,
-    8,
-    "Uñas acrílicas",
-    "Largos, formas y diseños personalizados"
-  ),
-  ...createGalleryItems(
-    "Esmaltado permanente",
-    9,
-    16,
-    "Esmaltado permanente",
-    "Color, brillo y terminación prolija"
-  ),
-  ...createGalleryItems(
-    "Nivelación",
-    17,
-    24,
-    "Nivelación",
-    "Refuerzo, estructura y acabado natural"
-  ),
-  ...createGalleryItems(
-    "Full set",
-    25,
-    33,
-    "Full set",
-    "Diseño completo según inspiración"
-  ),
-  ...createGalleryItems(
-    "Uñas cortas",
-    34,
-    41,
-    "Uñas cortas",
-    "Diseños limpios, cómodos y femeninos"
-  ),
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 1",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(1).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 1",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(2).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 2",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(3).jpeg",
+  },
+  {
+    category: "Uñas cortas",
+    title: "Uñas cortas 1",
+    detail: "Diseños limpios, cómodos y femeninos",
+    image: "/galeria/1%20(4).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 2",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(5).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 3",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(6).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 1",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(7).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 2",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(8).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 3",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(9).jpeg",
+  },
+  {
+    category: "Nivelación",
+    title: "Nivelación 1",
+    detail: "Refuerzo, estructura y acabado natural",
+    image: "/galeria/1%20(10).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 4",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(11).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 3",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(12).jpeg",
+  },
+  {
+    category: "Uñas cortas",
+    title: "Uñas cortas 2",
+    detail: "Diseños limpios, cómodos y femeninos",
+    image: "/galeria/1%20(13).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 4",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(14).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 5",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(15).jpeg",
+  },
+  {
+    category: "Nivelación",
+    title: "Nivelación 2",
+    detail: "Refuerzo, estructura y acabado natural",
+    image: "/galeria/1%20(16).jpeg",
+  },
+  {
+    category: "Nivelación",
+    title: "Nivelación 3",
+    detail: "Refuerzo, estructura y acabado natural",
+    image: "/galeria/1%20(17).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 6",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(18).jpeg",
+  },
+  {
+    category: "Nivelación",
+    title: "Nivelación 4",
+    detail: "Refuerzo, estructura y acabado natural",
+    image: "/galeria/1%20(19).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 4",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(20).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 5",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(21).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 7",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(22).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 6",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(23).jpeg",
+  },
+  {
+    category: "Soft gel",
+    title: "Soft gel 1",
+    detail: "Extensión delicada, cómoda y resistente",
+    image: "/galeria/1%20(24).jpeg",
+  },
+  {
+    category: "Soft gel",
+    title: "Soft gel 2",
+    detail: "Extensión delicada, cómoda y resistente",
+    image: "/galeria/1%20(25).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 8",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(26).jpeg",
+  },
+  {
+    category: "Nivelación",
+    title: "Nivelación 5",
+    detail: "Refuerzo, estructura y acabado natural",
+    image: "/galeria/1%20(27).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 7",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(28).jpeg",
+  },
+  {
+    category: "Nivelación",
+    title: "Nivelación 6",
+    detail: "Refuerzo, estructura y acabado natural",
+    image: "/galeria/1%20(29).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 5",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(30).jpeg",
+  },
+  {
+    category: "Uñas cortas",
+    title: "Uñas cortas 3",
+    detail: "Diseños limpios, cómodos y femeninos",
+    image: "/galeria/1%20(31).jpeg",
+  },
+  {
+    category: "Soft gel",
+    title: "Soft gel 3",
+    detail: "Extensión delicada, cómoda y resistente",
+    image: "/galeria/1%20(32).jpeg",
+  },
+  {
+    category: "Soft gel",
+    title: "Soft gel 4",
+    detail: "Extensión delicada, cómoda y resistente",
+    image: "/galeria/1%20(33).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 8",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(34).jpeg",
+  },
+  {
+    category: "Full set",
+    title: "Full set 9",
+    detail: "Diseño completo según inspiración",
+    image: "/galeria/1%20(35).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 6",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(36).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 7",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(37).jpeg",
+  },
+  {
+    category: "Uñas cortas",
+    title: "Uñas cortas 4",
+    detail: "Diseños limpios, cómodos y femeninos",
+    image: "/galeria/1%20(38).jpeg",
+  },
+  {
+    category: "Acrílicas",
+    title: "Uñas acrílicas 9",
+    detail: "Largos, formas y diseños personalizados",
+    image: "/galeria/1%20(39).jpeg",
+  },
+  {
+    category: "Esmaltado permanente",
+    title: "Esmaltado permanente 8",
+    detail: "Color, brillo y terminación prolija",
+    image: "/galeria/1%20(40).jpeg",
+  },
+  {
+    category: "Soft gel",
+    title: "Soft gel 5",
+    detail: "Extensión delicada, cómoda y resistente",
+    image: "/galeria/1%20(41).jpeg",
+  },
 ]
 
 const steps = [
@@ -260,20 +458,20 @@ export default function Home() {
   return (
     <main className="page-glow-bg min-h-screen overflow-x-hidden text-[#24171D]">
       <nav className="fixed left-0 top-0 z-50 w-full border-b border-[#FFD6E7]/70 bg-[#FFFDFE]/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
-          <a href="#inicio" className="flex items-center gap-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-5">
+          <a href="#inicio" className="flex items-center gap-3 md:gap-4">
             <img
               src="/galeria/logo.png"
               alt="Logo Javiera Nails"
-              className="logo-glow h-16 w-16 rounded-full bg-white object-contain p-1.5 md:h-20 md:w-20"
+              className="logo-glow h-14 w-14 rounded-full bg-white object-contain p-1.5 md:h-20 md:w-20"
             />
 
             <div>
-              <h1 className="text-2xl font-black leading-none text-[#FF6FAE] md:text-3xl">
+              <h1 className="text-xl font-black leading-none text-[#FF6FAE] md:text-3xl">
                 {business.name}
               </h1>
-              <p className="gold-text text-sm font-bold">
-                {business.instagram}
+              <p className="gold-text text-xs font-bold md:text-sm">
+                Manicurista certificada
               </p>
             </div>
           </a>
@@ -298,7 +496,7 @@ export default function Home() {
 
           <a
             href="#agenda"
-            className="pink-button px-5 py-3 text-sm font-black text-white transition hover:-translate-y-1"
+            className="pink-button px-4 py-3 text-xs font-black text-white transition hover:-translate-y-1 md:px-5 md:text-sm"
           >
             Reservar
           </a>
@@ -307,15 +505,15 @@ export default function Home() {
 
       <section
         id="inicio"
-        className="relative overflow-hidden px-5 pb-20 pt-40 md:pb-28 md:pt-48"
+        className="relative overflow-hidden px-4 pb-16 pt-32 md:px-5 md:pb-28 md:pt-48"
       >
         <div className="absolute left-10 top-28 h-44 w-44 rounded-full bg-[#FF6FAE]/25 blur-3xl"></div>
         <div className="absolute bottom-10 right-10 h-60 w-60 rounded-full bg-[#FFD6E7]/70 blur-3xl"></div>
         <div className="absolute right-1/3 top-32 h-32 w-32 rounded-full bg-[#F7B8CF]/45 blur-3xl"></div>
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="mb-5 inline-block rounded-full bg-[#FFFDFE] px-5 py-2 font-black text-[#FF6FAE] shadow-lg shadow-pink-100">
+            <p className="mb-5 inline-block rounded-full bg-[#FFFDFE] px-5 py-2 text-sm font-black text-[#FF6FAE] shadow-lg shadow-pink-100 md:text-base">
               Manicurista certificada en Conchalí
             </p>
 
@@ -326,12 +524,12 @@ export default function Home() {
               </span>
             </h2>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#7D6670]">
-              {business.experience} en {business.location}. Agenda tu hora por
-              WhatsApp y confirma tu reserva con un abono de {business.deposit}.
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[#7D6670] md:text-lg">
+              Atención personalizada en un espacio preparado para cuidar tus
+              uñas con prolijidad, diseño y comodidad.
             </p>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href="#agenda"
                 className="pink-button px-8 py-4 text-center font-black text-white transition hover:-translate-y-1"
@@ -347,7 +545,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="mt-9 grid gap-4 sm:grid-cols-3">
               <div className="rounded-3xl bg-[#FFFDFE] p-5 shadow-lg shadow-pink-100">
                 <strong className="block text-3xl font-black text-[#FF6FAE]">
                   2020
@@ -377,40 +575,42 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative min-h-[520px]">
-            <div className="absolute inset-x-4 bottom-10 top-10 rounded-[3rem] bg-gradient-to-br from-[#FFD6E7] via-[#FFFDFE] to-[#F7B8CF] p-6 shadow-2xl shadow-pink-200">
-              <div className="flex h-full flex-col items-center justify-center rounded-[2.4rem] bg-[#FFFDFE]/80 p-8 text-center">
+          <div className="relative">
+            <div className="overflow-hidden rounded-[2.5rem] bg-[#FFFDFE] p-3 shadow-2xl shadow-pink-200 md:rounded-[3rem] md:p-4">
+              <div className="relative overflow-hidden rounded-[2rem] bg-[#FFF4F8] md:rounded-[2.4rem]">
                 <img
-                  src="/galeria/logo.png"
-                  alt="Logo Javiera Nails"
-                  className="logo-glow mb-8 h-40 w-40 rounded-full bg-white object-contain p-3 md:h-52 md:w-52"
+                  src="/galeria/salon.jpeg"
+                  alt="Salón de Javiera Nails"
+                  className="h-auto max-h-[620px] w-full object-contain"
                 />
 
-                <h3 className="text-4xl font-black leading-tight">
-                  Diseño, cuidado y estilo en cada{" "}
-                  <span className="font-script text-6xl font-normal text-[#FF6FAE]">
-                    detalle
-                  </span>
-                </h3>
+                <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 shadow-xl backdrop-blur-md md:left-5 md:top-5 md:gap-3 md:px-4 md:py-3">
+                  <img
+                    src="/galeria/logo.png"
+                    alt="Logo Javiera Nails"
+                    className="h-10 w-10 rounded-full bg-white object-contain p-1 md:h-14 md:w-14"
+                  />
 
-                <p className="mt-4 font-bold text-[#FF6FAE]">
-                  {business.location}
-                </p>
-
-                <p className="mt-2 text-sm font-bold text-[#7D6670]">
-                  {business.note}
-                </p>
+                  <div>
+                    <p className="font-script text-2xl leading-none text-[#FF6FAE] md:text-3xl">
+                      Javiera Nails
+                    </p>
+                    <p className="text-[10px] font-black text-[#7D6670] md:text-xs">
+                      Manicure certificada
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="absolute left-0 top-0 rotate-[-7deg] rounded-3xl bg-[#FFFDFE] p-5 text-center shadow-xl shadow-pink-100">
-              <div className="text-4xl">✨</div>
-              <p className="mt-2 font-black text-[#FF6FAE]">Diseños</p>
-            </div>
-
-            <div className="absolute bottom-0 right-0 rotate-[6deg] rounded-3xl bg-[#FFFDFE] p-5 text-center shadow-xl shadow-pink-100">
-              <div className="text-4xl">🌸</div>
-              <p className="mt-2 font-black text-[#FF6FAE]">Estilo</p>
+            <div className="mx-auto mt-5 max-w-xl rounded-[2rem] bg-white/85 p-5 text-center shadow-xl shadow-pink-100 backdrop-blur-md">
+              <p className="font-black text-[#24171D]">
+                Espacio cómodo, limpio y preparado para una atención prolija.
+              </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-[#7D6670]">
+                Reserva online, confirma por WhatsApp y asegura tu hora con
+                abono.
+              </p>
             </div>
           </div>
         </div>
@@ -432,20 +632,24 @@ export default function Home() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="rounded-[2rem] bg-[#FFFDFE] p-7 shadow-xl shadow-pink-100 transition hover:-translate-y-3"
+              className="overflow-hidden rounded-[2rem] bg-[#FFFDFE] shadow-xl shadow-pink-100 transition hover:-translate-y-3"
             >
-              <div className="mb-6 grid h-20 w-20 place-items-center rounded-3xl bg-[#FFD6E7] text-5xl">
-                {service.icon}
-              </div>
+              <img
+                src={service.image}
+                alt={service.title}
+                className="h-56 w-full object-cover"
+              />
 
-              <h4 className="text-2xl font-black">{service.title}</h4>
+              <div className="p-7">
+                <h4 className="text-2xl font-black">{service.title}</h4>
 
-              <p className="mt-4 leading-7 text-[#7D6670]">
-                {service.description}
-              </p>
+                <p className="mt-4 leading-7 text-[#7D6670]">
+                  {service.description}
+                </p>
 
-              <div className="mt-6 inline-block rounded-full bg-[#FFF4F8] px-5 py-3 font-black text-[#FF6FAE]">
-                {service.price}
+                <div className="mt-6 inline-block rounded-full bg-[#FFF4F8] px-5 py-3 font-black text-[#FF6FAE]">
+                  {service.price}
+                </div>
               </div>
             </article>
           ))}
@@ -455,22 +659,24 @@ export default function Home() {
       <section id="sobre-mi" className="bg-[#FFFDFE] px-5 py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="rounded-[3rem] bg-gradient-to-br from-[#FFD6E7] to-[#F7B8CF] p-5 shadow-2xl shadow-pink-100">
-            <div className="rounded-[2.4rem] bg-[#FFFDFE]/80 p-10 text-center">
+            <div className="rounded-[2.4rem] bg-[#FFFDFE]/80 p-5 text-center md:p-8">
               <img
-                src="/galeria/logo.png"
-                alt="Logo Javiera Nails"
-                className="logo-glow mx-auto mb-8 h-36 w-36 rounded-full bg-white object-contain p-3 md:h-44 md:w-44"
+                src="/galeria/fotojavi.jpeg"
+                alt="Foto de Javiera Valenzuela"
+                className="mx-auto h-[420px] w-full max-w-md rounded-[2rem] object-cover shadow-2xl shadow-pink-200 ring-8 ring-[#FFD6E7]"
               />
 
-              <h3 className="text-4xl font-black">{business.owner}</h3>
+              <div className="mt-8">
+                <h3 className="text-4xl font-black">{business.owner}</h3>
 
-              <p className="mt-3 font-black text-[#FF6FAE]">
-                {business.experience}
-              </p>
+                <p className="mt-3 font-black text-[#FF6FAE]">
+                  {business.experience}
+                </p>
 
-              <p className="mt-5 leading-8 text-[#7D6670]">
-                Trabajo dedicado, prolijo y personalizado para cada clienta.
-              </p>
+                <p className="mt-5 leading-8 text-[#7D6670]">
+                  Trabajo dedicado, prolijo y personalizado para cada clienta.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -498,6 +704,13 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            <a
+              href="#agenda"
+              className="pink-button mt-8 inline-block px-8 py-4 text-center font-black text-white transition hover:-translate-y-1"
+            >
+              Agendar con Javiera
+            </a>
           </div>
         </div>
       </section>
