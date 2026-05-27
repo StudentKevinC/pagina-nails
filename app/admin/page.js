@@ -7,10 +7,11 @@ import { supabase } from "../../lib/supabaseClient"
 export const dynamic = "force-dynamic"
 
 const services = [
-  "Manicure permanente",
+  "Esmaltado permanente",
   "Soft gel",
-  "Diseños personalizados",
-  "Retiro y cuidado",
+  "Nivelación base rubber",
+  "Nivelación polygel",
+  "Baño acrílico",
 ]
 
 const days = [

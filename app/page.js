@@ -20,88 +20,130 @@ const business = {
 const services = [
   {
     icon: "💅",
-    title: "Manicure permanente",
+    title: "Esmaltado permanente",
     description:
-      "Esmaltado permanente con preparación, limpieza y terminación prolija.",
-    price: "Desde $15.000",
+      "Esmaltado de larga duración con preparación de la uña natural, limpieza y terminación prolija.",
+    price: "Valor según diseño",
   },
   {
     icon: "✨",
     title: "Soft gel",
     description:
-      "Extensión de uñas con acabado elegante, natural y resistente.",
-    price: "Desde $22.000",
+      "Extensión de uñas con tips soft gel, ideal para lograr largo, forma y un acabado delicado.",
+    price: "Valor según largo y diseño",
   },
   {
     icon: "🌸",
-    title: "Diseños personalizados",
+    title: "Nivelación base rubber",
     description:
-      "Diseños delicados, brillos, francés, efectos, stickers y detalles.",
-    price: "Desde $2.000 adicional",
+      "Nivelación sobre uña natural con base rubber para reforzar, emparejar y dar un acabado más resistente.",
+    price: "Valor según diseño",
   },
   {
-    icon: "🧴",
-    title: "Retiro y cuidado",
+    icon: "🤍",
+    title: "Nivelación polygel",
     description:
-      "Retiro seguro, limado, limpieza y cuidado de la uña natural.",
-    price: "Desde $5.000",
+      "Refuerzo y nivelación con polygel para aportar estructura, resistencia y una terminación más firme.",
+    price: "Valor según diseño",
+  },
+  {
+    icon: "💎",
+    title: "Baño acrílico",
+    description:
+      "Capa de acrílico sobre la uña natural para entregar mayor resistencia y duración.",
+    price: "Valor según largo y diseño",
   },
 ]
 
 const skills = [
-  "Manicure permanente",
+  "Esmaltado permanente",
   "Soft gel",
-  "Diseños delicados",
+  "Nivelación base rubber",
+  "Nivelación polygel",
+  "Baño acrílico",
+  "Diseños personalizados",
   "Preparación de uña natural",
-  "Atención personalizada",
   "Trabajo prolijo y detallista",
+]
+
+const galleryFilters = [
+  "Acrílicas",
+  "Esmaltado permanente",
+  "Nivelación",
+  "Full set",
+  "Uñas cortas",
 ]
 
 const gallery = [
   {
-    emoji: "💗",
-    title: "Diseño rosado",
-    detail: "Tonos suaves y femeninos",
-  },
-  {
-    emoji: "🤍",
-    title: "French elegante",
-    detail: "Clásico, limpio y delicado",
-  },
-  {
-    emoji: "✨",
-    title: "Brillos y detalles",
-    detail: "Ideal para ocasiones especiales",
-  },
-  {
-    emoji: "🌷",
-    title: "Diseño floral",
-    detail: "Arte delicado y personalizado",
-  },
-  {
+    category: "Acrílicas",
     emoji: "💎",
-    title: "Soft gel",
-    detail: "Extensión natural y resistente",
+    title: "Acrílicas delicadas",
+    detail: "Largos, formas y diseños personalizados",
+    image: "",
   },
   {
+    category: "Acrílicas",
+    emoji: "🌸",
+    title: "Acrílicas con diseño",
+    detail: "Diseños femeninos y detalles a elección",
+    image: "",
+  },
+  {
+    category: "Esmaltado permanente",
+    emoji: "💅",
+    title: "Esmaltado permanente",
+    detail: "Color, brillo y terminación prolija",
+    image: "",
+  },
+  {
+    category: "Esmaltado permanente",
+    emoji: "✨",
+    title: "Permanente con detalles",
+    detail: "Diseños simples y elegantes",
+    image: "",
+  },
+  {
+    category: "Nivelación",
+    emoji: "🤍",
+    title: "Nivelación base rubber",
+    detail: "Refuerzo y acabado natural",
+    image: "",
+  },
+  {
+    category: "Nivelación",
+    emoji: "🌷",
+    title: "Nivelación con diseño",
+    detail: "Estructura, brillo y detalle",
+    image: "",
+  },
+  {
+    category: "Full set",
     emoji: "🦋",
-    title: "Diseños creativos",
-    detail: "Ideas únicas según tu estilo",
-  },
-]
-
-const testimonials = [
-  {
-    name: "Camila R.",
-    text: "Muy prolija y detallista. Me encantó el resultado y las uñas me duraron perfecto.",
+    title: "Full set personalizado",
+    detail: "Diseño completo según inspiración",
+    image: "",
   },
   {
-    name: "Fernanda M.",
-    text: "Excelente atención, súper cuidadosa y ordenada. El diseño quedó precioso.",
+    category: "Full set",
+    emoji: "💗",
+    title: "Full set glam",
+    detail: "Brillos, detalles y estilo completo",
+    image: "",
   },
   {
-    name: "Valentina S.",
-    text: "Me gustó mucho la experiencia. Javiera se toma el tiempo para dejar todo impecable.",
+    category: "Uñas cortas",
+    emoji: "🌼",
+    title: "Uñas cortas delicadas",
+    detail: "Diseños limpios y femeninos",
+    image: "",
+  },
+  {
+    category: "Uñas cortas",
+    emoji: "🤍",
+    title: "Uñas cortas naturales",
+    detail: "Estilo simple, elegante y cómodo",
+    image: "",
   },
 ]
 
@@ -109,7 +151,7 @@ const steps = [
   {
     number: "1",
     title: "Elige tu servicio",
-    text: "Selecciona manicure, soft gel, retiro, diseño o el servicio que necesites.",
+    text: "Selecciona el servicio que necesitas: esmaltado, soft gel, nivelación o baño acrílico.",
   },
   {
     number: "2",
@@ -134,6 +176,9 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState("")
   const [selectedTime, setSelectedTime] = useState("")
   const [loadingAppointments, setLoadingAppointments] = useState(true)
+  const [selectedGalleryFilter, setSelectedGalleryFilter] = useState(
+    galleryFilters[0]
+  )
 
   useEffect(() => {
     const loadAppointments = async () => {
@@ -168,6 +213,10 @@ export default function Home() {
     .filter((item) => item.date === selectedDate)
     .map((item) => item.time)
 
+  const filteredGallery = gallery.filter(
+    (item) => item.category === selectedGalleryFilter
+  )
+
   const handleBooking = () => {
     if (!selectedTime) {
       alert("Selecciona una hora antes de reservar.")
@@ -185,9 +234,11 @@ export default function Home() {
       <nav className="fixed left-0 top-0 z-50 w-full border-b border-[#f2d7e2] bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#inicio" className="flex items-center gap-3">
-            <div className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-[#f7c8d9] to-[#e78aae] text-lg font-black text-white shadow-lg shadow-pink-200">
-              JV
-            </div>
+            <img
+              src="/logo.jpeg"
+              alt="Logo Javiera Nails"
+              className="h-12 w-12 rounded-full bg-white object-contain p-1 shadow-lg shadow-pink-200"
+            />
 
             <div>
               <h1 className="text-xl font-black leading-none text-[#d96f9b]">
@@ -298,7 +349,12 @@ export default function Home() {
           <div className="relative min-h-[460px]">
             <div className="absolute inset-x-4 bottom-10 top-10 rounded-[3rem] bg-gradient-to-br from-[#f8dce8] via-white to-[#f1d5bd] p-6 shadow-2xl shadow-pink-200">
               <div className="flex h-full flex-col items-center justify-center rounded-[2.4rem] bg-white/80 p-8 text-center">
-                <div className="mb-6 text-8xl">💅</div>
+                <img
+                  src="/logo.jpeg"
+                  alt="Logo Javiera Nails"
+                  className="mb-6 h-28 w-28 rounded-full bg-white object-contain p-2 shadow-lg shadow-pink-200"
+                />
+
                 <h3 className="text-4xl font-black leading-tight">
                   Diseño, cuidado y estilo en cada detalle
                 </h3>
@@ -336,11 +392,11 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
           {services.map((service) => (
             <article
               key={service.title}
-              className="rounded-[2rem] bg-white p-8 shadow-xl shadow-pink-100 transition hover:-translate-y-3"
+              className="rounded-[2rem] bg-white p-7 shadow-xl shadow-pink-100 transition hover:-translate-y-3"
             >
               <div className="mb-6 grid h-20 w-20 place-items-center rounded-3xl bg-[#f8dce8] text-5xl">
                 {service.icon}
@@ -364,9 +420,11 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="rounded-[3rem] bg-gradient-to-br from-[#f8dce8] to-[#f1d5bd] p-5 shadow-2xl shadow-pink-100">
             <div className="rounded-[2.4rem] bg-white/80 p-10 text-center">
-              <div className="mx-auto mb-6 grid h-24 w-24 place-items-center rounded-full bg-[#d96f9b] text-3xl font-black text-white">
-                JV
-              </div>
+              <img
+                src="/logo.jpeg"
+                alt="Logo Javiera Nails"
+                className="mx-auto mb-6 h-24 w-24 rounded-full bg-white object-contain p-2 shadow-lg shadow-pink-200"
+              />
 
               <h3 className="text-4xl font-black">{business.owner}</h3>
 
@@ -417,27 +475,62 @@ export default function Home() {
           </h3>
 
           <p className="mt-5 leading-8 text-[#6d5c63]">
-            Desliza hacia el lado para ver ideas de diseños, colores y estilos.
-            Luego esta sección se puede reemplazar por fotos reales.
+            Elige una categoría y desliza hacia el lado para ver diseños e ideas
+            de uñas.
           </p>
+        </div>
+
+        <div className="mx-auto mb-8 flex max-w-7xl gap-3 overflow-x-auto pb-3">
+          {galleryFilters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setSelectedGalleryFilter(filter)}
+              className={`shrink-0 rounded-full px-5 py-3 font-black transition ${
+                selectedGalleryFilter === filter
+                  ? "bg-[#d96f9b] text-white shadow-lg shadow-pink-200"
+                  : "bg-white text-[#6d5c63] shadow-md shadow-pink-100 hover:bg-[#fff1f6]"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
 
         <div className="mx-auto max-w-7xl overflow-x-auto pb-6">
           <div className="flex min-w-max gap-5">
-            {gallery.map((item) => (
+            {filteredGallery.map((item, index) => (
               <article
-                key={item.title}
+                key={`${item.category}-${index}`}
                 className="w-72 shrink-0 rounded-[2rem] bg-gradient-to-br from-[#f8dce8] via-white to-[#f1d5bd] p-5 shadow-xl shadow-pink-100 transition hover:-translate-y-2 md:w-80"
               >
-                <div className="grid h-64 place-items-center rounded-[1.5rem] bg-white/80 text-center">
-                  <div>
-                    <div className="text-7xl">{item.emoji}</div>
-                    <h4 className="mt-5 text-2xl font-black">{item.title}</h4>
-                    <p className="mt-2 font-bold text-[#d96f9b]">
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-72 w-full rounded-[1.5rem] object-cover"
+                  />
+                ) : (
+                  <div className="grid h-72 place-items-center rounded-[1.5rem] bg-white/80 text-center">
+                    <div>
+                      <div className="text-7xl">{item.emoji}</div>
+                      <h4 className="mt-5 text-2xl font-black">
+                        {item.title}
+                      </h4>
+                      <p className="mt-2 font-bold text-[#d96f9b]">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {item.image && (
+                  <div className="pt-5">
+                    <h4 className="text-xl font-black">{item.title}</h4>
+                    <p className="mt-1 font-bold text-[#d96f9b]">
                       {item.detail}
                     </p>
                   </div>
-                </div>
+                )}
               </article>
             ))}
           </div>
@@ -590,11 +683,16 @@ export default function Home() {
       <section className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="font-black text-[#d96f9b]">Cómo funciona</p>
+            <p className="font-black text-[#d96f9b]">Reserva e información</p>
 
             <h3 className="mt-3 text-4xl font-black md:text-5xl">
-              Reserva tu hora en simples pasos
+              Cómo funciona la agenda
             </h3>
+
+            <p className="mt-5 leading-8 text-[#6d5c63]">
+              Revisa las condiciones antes de agendar para asegurar tu hora y
+              evitar cambios de último minuto.
+            </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -613,55 +711,60 @@ export default function Home() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="bg-white px-5 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="font-black text-[#d96f9b]">Opiniones</p>
+          <div className="mt-10 rounded-[2rem] bg-[#fff1f6] p-8 md:p-10">
+            <p className="font-black text-[#d96f9b]">Información importante</p>
 
-            <h3 className="mt-3 text-4xl font-black md:text-5xl">
-              Lo que dicen las clientas
-            </h3>
-          </div>
+            <h4 className="mt-3 text-3xl font-black">
+              Condiciones de reserva, garantía y puntualidad
+            </h4>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.name}
-                className="rounded-[2rem] bg-[#fff8fb] p-8 shadow-xl shadow-pink-100"
-              >
-                <div className="mb-5 text-3xl">⭐️⭐️⭐️⭐️⭐️</div>
+            <div className="mt-8 grid gap-4 text-[#6d5c63] md:grid-cols-2">
+              <p>✅ No se agendan horas sin abono.</p>
+              <p>
+                ✅ Para toda hora se solicita un abono de {business.deposit}.
+              </p>
+              <p>
+                ✅ El abono no es reembolsable si se cambia la hora el mismo día.
+              </p>
+              <p>
+                ✅ Para cambiar una hora, se debe avisar con 24 horas de
+                anticipación.
+              </p>
+              <p>✅ Se esperan máximo 10 minutos de atraso.</p>
+              <p>✅ Al minuto 11, la hora queda cancelada.</p>
+              <p>
+                ✅ Llegar 20 a 30 minutos antes también se considera
+                impuntualidad.
+              </p>
+              <p>✅ Asistir sin acompañantes.</p>
+              <p>✅ Asistir con tiempo y con el diseño elegido.</p>
+              <p>✅ Si vienes apurada, se recomienda no agendar ese día.</p>
+            </div>
 
-                <p className="leading-8 text-[#6d5c63]">
-                  “{testimonial.text}”
+            <div className="mt-8 rounded-3xl bg-white p-6 text-[#6d5c63]">
+              <h5 className="text-xl font-black text-[#d96f9b]">Garantías</h5>
+
+              <div className="mt-4 grid gap-4">
+                <p>
+                  <strong>Uñas acrílicas:</strong> garantía de 5 días solamente
+                  por levantamiento en zona de cutícula.
                 </p>
 
-                <h4 className="mt-6 font-black text-[#d96f9b]">
-                  {testimonial.name}
-                </h4>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+                <p>
+                  <strong>
+                    Esmaltado permanente, base rubber y nivelación:
+                  </strong>{" "}
+                  garantía de 3 días solamente por mal secado en lámpara o
+                  burbujas.
+                </p>
 
-      <section className="px-5 py-24">
-        <div className="mx-auto max-w-5xl rounded-[2rem] bg-[#fff1f6] p-8 md:p-12">
-          <p className="font-black text-[#d96f9b]">Condiciones de reserva</p>
-
-          <h3 className="mt-3 text-3xl font-black md:text-4xl">
-            Información importante antes de agendar
-          </h3>
-
-          <div className="mt-8 grid gap-4 text-[#6d5c63]">
-            <p>✅ La reserva se confirma con un abono de {business.deposit}.</p>
-            <p>✅ El abono permite guardar la fecha y hora seleccionada.</p>
-            <p>✅ Atención en Honestudio, Santiago, Conchalí.</p>
-            <p>✅ No se realizan domicilios.</p>
-            <p>✅ El valor final puede variar según diseño, largo o técnica.</p>
-            <p>✅ En caso de cambios, avisar con anticipación por WhatsApp.</p>
+                <p>
+                  No aplica garantía si el esmalte se pica por roce o mal
+                  cuidado de las uñas.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
