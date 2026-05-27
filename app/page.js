@@ -134,7 +134,7 @@ const steps = [
   {
     number: "2",
     title: "Agenda una hora",
-    text: "Escoge el día y horario disponible desde la agenda online.",
+    text: "Escoge la fecha y el horario disponible desde la agenda online.",
   },
   {
     number: "3",
@@ -165,8 +165,9 @@ export default function Home() {
       const { data, error } = await supabase
         .from("appointments")
         .select("*")
-        .eq("available", true)
-        .order("id", { ascending: true })
+        .eq("status", "available")
+        .order("date", { ascending: true })
+        .order("time", { ascending: true })
 
       setLoadingAppointments(false)
 
@@ -185,26 +186,75 @@ export default function Home() {
     loadAppointments()
   }, [])
 
+  const formatDate = (dateValue) => {
+    if (!dateValue) return ""
+
+    const date = new Date(`${dateValue}T00:00:00`)
+
+    if (Number.isNaN(date.getTime())) return dateValue
+
+    return date.toLocaleDateString("es-CL", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    })
+  }
+
   const availableDays = [...new Set(appointments.map((item) => item.date))]
 
-  const availableTimes = appointments
-    .filter((item) => item.date === selectedDate)
-    .map((item) => item.time)
+  const availableTimes = appointments.filter(
+    (item) => item.date === selectedDate
+  )
 
   const filteredGallery = gallery.filter(
     (item) => item.category === selectedGalleryFilter
   )
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (!selectedTime) {
       alert("Selecciona una hora antes de reservar.")
       return
     }
 
-    const message = `Hola Javiera, quiero reservar una hora para ${selectedService} el día ${selectedDate} a las ${selectedTime}. Entiendo que la atención es en Honestudio, Santiago, Conchalí, que no se realizan domicilios y que debo abonar ${business.deposit} para guardar la fecha.`
+    const selectedAppointment = appointments.find(
+      (appointment) =>
+        appointment.date === selectedDate && appointment.time === selectedTime
+    )
+
+    if (!selectedAppointment) {
+      alert("Este horario ya no está disponible.")
+      return
+    }
+
+    const { error } = await supabase
+      .from("appointments")
+      .update({
+        status: "booked",
+        available: false,
+      })
+      .eq("id", selectedAppointment.id)
+
+    if (error) {
+      alert("No se pudo reservar el horario. Intenta nuevamente.")
+      console.log(error)
+      return
+    }
+
+    const message = `Hola Javiera, quiero reservar una hora para ${selectedService} el día ${formatDate(
+      selectedDate
+    )} a las ${selectedTime}. Entiendo que la atención es en Honestudio, Santiago, Conchalí, que no se realizan domicilios y que debo abonar ${business.deposit} para guardar la fecha.`
+
     const encodedMessage = encodeURIComponent(message)
 
     window.open(`${business.whatsappUrl}?text=${encodedMessage}`, "_blank")
+
+    setAppointments((currentAppointments) =>
+      currentAppointments.filter(
+        (appointment) => appointment.id !== selectedAppointment.id
+      )
+    )
+
+    setSelectedTime("")
   }
 
   return (
@@ -513,7 +563,7 @@ export default function Home() {
             <p className="font-black text-[#FF6FAE]">Agenda online</p>
 
             <h3 className="mt-3 text-4xl font-black md:text-5xl">
-              Selecciona servicio, día y hora
+              Selecciona servicio, fecha y hora
             </h3>
 
             <p className="mt-5 leading-8 text-[#7D6670]">
@@ -555,7 +605,7 @@ export default function Home() {
             </div>
 
             <div className="rounded-[2rem] bg-[#FFD6E7] p-5">
-              <h4 className="mb-4 text-xl font-black">2. Día disponible</h4>
+              <h4 className="mb-4 text-xl font-black">2. Fecha disponible</h4>
 
               <div className="mb-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {loadingAppointments && (
@@ -566,7 +616,7 @@ export default function Home() {
 
                 {!loadingAppointments && availableDays.length === 0 && (
                   <p className="rounded-2xl bg-[#FFFDFE] p-5 text-[#7D6670]">
-                    No hay días disponibles por ahora.
+                    No hay fechas disponibles por ahora.
                   </p>
                 )}
 
@@ -577,13 +627,13 @@ export default function Home() {
                       setSelectedDate(day)
                       setSelectedTime("")
                     }}
-                    className={`rounded-2xl px-5 py-4 text-left font-black transition ${
+                    className={`rounded-2xl px-5 py-4 text-left font-black capitalize transition ${
                       selectedDate === day
                         ? "pink-button text-white"
                         : "bg-[#FFFDFE] text-[#7D6670] hover:bg-[#FFF4F8]"
                     }`}
                   >
-                    {day}
+                    {formatDate(day)}
                   </button>
                 ))}
               </div>
@@ -593,21 +643,23 @@ export default function Home() {
               <div className="grid gap-4 sm:grid-cols-3">
                 {!loadingAppointments && availableTimes.length === 0 && (
                   <p className="rounded-2xl bg-[#FFFDFE] p-5 text-[#7D6670]">
-                    No hay horarios disponibles para este día.
+                    No hay horarios disponibles para esta fecha.
                   </p>
                 )}
 
-                {availableTimes.map((time) => (
+                {availableTimes.map((appointment) => (
                   <button
-                    key={time}
-                    onClick={() => setSelectedTime(time)}
+                    key={appointment.id}
+                    onClick={() => setSelectedTime(appointment.time)}
                     className={`rounded-2xl px-5 py-6 text-center shadow-lg shadow-pink-100 transition hover:-translate-y-2 ${
-                      selectedTime === time
+                      selectedTime === appointment.time
                         ? "pink-button text-white"
                         : "bg-[#FFFDFE] text-[#7D6670] hover:bg-[#FFF4F8]"
                     }`}
                   >
-                    <span className="block text-2xl font-black">{time}</span>
+                    <span className="block text-2xl font-black">
+                      {appointment.time}
+                    </span>
                     <span className="mt-2 block text-sm font-bold">
                       Disponible
                     </span>
@@ -623,8 +675,10 @@ export default function Home() {
                     <strong>Servicio:</strong> {selectedService}
                   </p>
                   <p>
-                    <strong>Día:</strong>{" "}
-                    {selectedDate || "Selecciona un día"}
+                    <strong>Fecha:</strong>{" "}
+                    {selectedDate
+                      ? formatDate(selectedDate)
+                      : "Selecciona una fecha"}
                   </p>
                   <p>
                     <strong>Hora:</strong>{" "}
