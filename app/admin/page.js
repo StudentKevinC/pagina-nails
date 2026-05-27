@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabaseClient"
 
+export const dynamic = "force-dynamic"
+
 const services = [
   "Manicure permanente",
   "Soft gel",
