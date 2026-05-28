@@ -12,7 +12,7 @@ const business = {
   instagramUrl: "https://www.instagram.com/jaavieranailss/",
   phone: "+56 9 7750 3024",
   deposit: "$5.000",
-  location: "Honestudio en Santiago, Conchalí",
+  location: "Home Studio en Santiago, Conchalí",
   note: "No se realizan domicilios",
 }
 
@@ -77,248 +77,166 @@ const galleryFilters = [
 const gallery = [
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 1",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(1).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 1",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(2).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 2",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(3).jpeg",
   },
   {
     category: "Uñas cortas",
-    title: "Uñas cortas 1",
-    detail: "Diseños limpios, cómodos y femeninos",
     image: "/galeria/1%20(4).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 2",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(5).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 3",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(6).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 1",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(7).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 2",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(8).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 3",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(9).jpeg",
   },
   {
     category: "Nivelación",
-    title: "Nivelación 1",
-    detail: "Refuerzo, estructura y acabado natural",
     image: "/galeria/1%20(10).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 4",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(11).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 3",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(12).jpeg",
   },
   {
     category: "Uñas cortas",
-    title: "Uñas cortas 2",
-    detail: "Diseños limpios, cómodos y femeninos",
     image: "/galeria/1%20(13).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 4",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(14).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 5",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(15).jpeg",
   },
   {
     category: "Nivelación",
-    title: "Nivelación 2",
-    detail: "Refuerzo, estructura y acabado natural",
     image: "/galeria/1%20(16).jpeg",
   },
   {
     category: "Nivelación",
-    title: "Nivelación 3",
-    detail: "Refuerzo, estructura y acabado natural",
     image: "/galeria/1%20(17).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 6",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(18).jpeg",
   },
   {
     category: "Nivelación",
-    title: "Nivelación 4",
-    detail: "Refuerzo, estructura y acabado natural",
     image: "/galeria/1%20(19).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 4",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(20).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 5",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(21).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 7",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(22).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 6",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(23).jpeg",
   },
   {
     category: "Soft gel",
-    title: "Soft gel 1",
-    detail: "Extensión delicada, cómoda y resistente",
     image: "/galeria/1%20(24).jpeg",
   },
   {
     category: "Soft gel",
-    title: "Soft gel 2",
-    detail: "Extensión delicada, cómoda y resistente",
     image: "/galeria/1%20(25).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 8",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(26).jpeg",
   },
   {
     category: "Nivelación",
-    title: "Nivelación 5",
-    detail: "Refuerzo, estructura y acabado natural",
     image: "/galeria/1%20(27).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 7",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(28).jpeg",
   },
   {
     category: "Nivelación",
-    title: "Nivelación 6",
-    detail: "Refuerzo, estructura y acabado natural",
     image: "/galeria/1%20(29).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 5",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(30).jpeg",
   },
   {
     category: "Uñas cortas",
-    title: "Uñas cortas 3",
-    detail: "Diseños limpios, cómodos y femeninos",
     image: "/galeria/1%20(31).jpeg",
   },
   {
     category: "Soft gel",
-    title: "Soft gel 3",
-    detail: "Extensión delicada, cómoda y resistente",
     image: "/galeria/1%20(32).jpeg",
   },
   {
     category: "Soft gel",
-    title: "Soft gel 4",
-    detail: "Extensión delicada, cómoda y resistente",
     image: "/galeria/1%20(33).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 8",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(34).jpeg",
   },
   {
     category: "Full set",
-    title: "Full set 9",
-    detail: "Diseño completo según inspiración",
     image: "/galeria/1%20(35).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 6",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(36).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 7",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(37).jpeg",
   },
   {
     category: "Uñas cortas",
-    title: "Uñas cortas 4",
-    detail: "Diseños limpios, cómodos y femeninos",
     image: "/galeria/1%20(38).jpeg",
   },
   {
     category: "Acrílicas",
-    title: "Uñas acrílicas 9",
-    detail: "Largos, formas y diseños personalizados",
     image: "/galeria/1%20(39).jpeg",
   },
   {
     category: "Esmaltado permanente",
-    title: "Esmaltado permanente 8",
-    detail: "Color, brillo y terminación prolija",
     image: "/galeria/1%20(40).jpeg",
   },
   {
     category: "Soft gel",
-    title: "Soft gel 5",
-    detail: "Extensión delicada, cómoda y resistente",
     image: "/galeria/1%20(41).jpeg",
   },
 ]
@@ -440,7 +358,7 @@ export default function Home() {
 
     const message = `Hola Javiera, quiero reservar una hora para ${selectedService} el día ${formatDate(
       selectedDate
-    )} a las ${selectedTime}. Entiendo que la atención es en Honestudio, Santiago, Conchalí, que no se realizan domicilios y que debo abonar ${business.deposit} para guardar la fecha.`
+    )} a las ${selectedTime}. Entiendo que la atención es en Home Studio, Santiago, Conchalí, que no se realizan domicilios y que debo abonar ${business.deposit} para guardar la fecha.`
 
     const encodedMessage = encodeURIComponent(message)
 
@@ -750,20 +668,13 @@ export default function Home() {
             {filteredGallery.map((item, index) => (
               <article
                 key={`${item.category}-${index}`}
-                className="w-72 shrink-0 rounded-[2rem] bg-[#FFFDFE] p-4 shadow-xl shadow-pink-100 transition hover:-translate-y-2 md:w-80"
+                className="w-72 shrink-0 overflow-hidden rounded-[2rem] bg-[#FFFDFE] p-3 shadow-xl shadow-pink-100 transition hover:-translate-y-2 md:w-80"
               >
                 <img
                   src={item.image}
-                  alt={item.title}
-                  className="h-80 w-full rounded-[1.5rem] object-cover"
+                  alt={`Trabajo de uñas ${index + 1}`}
+                  className="h-96 w-full rounded-[1.5rem] object-cover"
                 />
-
-                <div className="pt-5">
-                  <h4 className="text-xl font-black">{item.title}</h4>
-                  <p className="mt-1 font-bold text-[#FF6FAE]">
-                    {item.detail}
-                  </p>
-                </div>
               </article>
             ))}
           </div>
@@ -1019,7 +930,7 @@ export default function Home() {
 
           <p className="mx-auto mt-6 max-w-2xl leading-8 text-pink-50">
             Escríbeme por WhatsApp o Instagram para consultar disponibilidad,
-            valores, diseños y condiciones de atención. Atención en Honestudio,
+            valores, diseños y condiciones de atención. Atención en Home Studio,
             Santiago, Conchalí. No se realizan domicilios.
           </p>
 
